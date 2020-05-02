@@ -1,0 +1,6 @@
+# Mocha configuration
+require: ts-node/register
+extension: ts
+recursive: true
+spec: test
+ 

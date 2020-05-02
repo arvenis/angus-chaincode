@@ -1,0 +1,11 @@
+src
+test
+.mocharc.yaml
+tsconfig.json
+.tscache
+.nyc_output
+*.tgz
+default.yaml
+dev-config.yaml
+yarn.lock
+*.js.map
