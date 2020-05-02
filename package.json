@@ -11,14 +11,11 @@
         "node": ">=12",
         "npm": ">=5"
     },
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
         "build": "node_modules/.bin/tsc && cp package.json dist/ && cp -r src/types dist/",
         "start": "fabric-chaincode-node start",
-        "devstart": "fabric-chaincode-node start --peer.address peer0:7052 --chaincode-id-name 'default:0' --module-path dist/default",
-        "prepublish": "npm run build"
+        "devstart": "fabric-chaincode-node start --peer.address peer0:7052 --chaincode-id-name 'default:0' --module-path dist/default"
     },
     "dependencies": {
         "fabric-contract-api": "2.1.1",

@@ -29,7 +29,7 @@ jobs:
         run: echo Run unit tests here...
         
       - name: Package application
-        run: npm pack
+        run: yarn pack
 
       - name: Setup Github Package repository
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc 
