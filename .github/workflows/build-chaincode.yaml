@@ -19,7 +19,7 @@ jobs:
           node-version: '12.x'
           registry-url: https://registry.npmjs.org
 
-      - name: Install Angus cmd
+      - name: Install Angus chaincode
         run: npm install
 
       - name: Run linter
@@ -28,10 +28,13 @@ jobs:
       - name: Run unit tests
         run: echo Run unit tests here...
         
+      - name: Build package
+        run: npm run build
+
       - name: Package application
         run: yarn pack
 
-      - name: Setup Github Package repository
+      - name: Login to npmjs
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc 
 
       - name: Push artifact
