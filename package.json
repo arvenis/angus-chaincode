@@ -1,6 +1,6 @@
 {
-    "name": "@ibanfi/angus-chaincode",
-    "version": "0.0.1",
+    "name": "angus-chaincode",
+    "version": "0.1.0",
     "description": "Angus chaincode - smart contract framework for HLF",
     "main": "index.js",
     "types": "./types/index.d.ts",
@@ -13,7 +13,7 @@
     },
     "files": [
         "dist"
-      ],
+    ],
     "scripts": {
         "build": "node_modules/.bin/tsc && cp package.json dist/ && cp -r src/types dist/",
         "start": "fabric-chaincode-node start",
