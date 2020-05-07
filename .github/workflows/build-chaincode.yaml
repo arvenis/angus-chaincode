@@ -33,6 +33,12 @@ jobs:
 
       - name: Package application
         run: yarn pack
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: angus-chaincode
+          path: angus-chaincode*.tgz
 
       - name: Login to npmjs
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc 
