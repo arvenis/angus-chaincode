@@ -1,6 +1,6 @@
 {
     "name": "angus-chaincode",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Angus chaincode - smart contract framework for HLF",
     "main": "dist/index.js",
     "types": "./types/index.d.ts",
