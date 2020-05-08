@@ -1,9 +1,9 @@
 {
     "name": "angus-chaincode",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Angus chaincode - smart contract framework for HLF",
     "main": "dist/index.js",
-    "types": "./types/index.d.ts",
+    "types": "dist/types/index.d.ts",
     "author": "Istvan Banfi",
     "license": "Apache-2.0",
     "engineStrict": true,
