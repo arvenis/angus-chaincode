@@ -3,7 +3,7 @@ import { AngusContext } from './context';
 
 import _ from 'lodash';
 
-export default class AngusController {
+export class AngusController {
 
     ctx: AngusContext;
     name: string;

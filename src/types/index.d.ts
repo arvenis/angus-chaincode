@@ -44,6 +44,18 @@ declare module 'angus-chaincode' {
         deleteModel(model: AngusModel): Promise<void>;
         getModelList(query: object): Promise<any[]>;
         use(modelClass: any): void;
-    }    
+    }
+    
+    export enum AngusErrorCodes {
+        ACCESS_DENIED,
+        INTERNAL_ERROR,
+        INVALID_SERVICE,
+        ENTITY_ALREADY_EXISTS,
+        ENTITY_NOT_EXIST
+    }
+    
+    export class AngusChaincodeError extends Error {
+        constructor(code?: AngusErrorCodes)
+    }
 }
 

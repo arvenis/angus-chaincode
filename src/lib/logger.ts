@@ -14,7 +14,7 @@ export namespace Logger {
           winston.format.padLevels(),
           winston.format.printf((info) => {
             const {timestamp, level, message} = info;
-            const str = `[angus:]`;
+            const str = `[angus]`;
             return `${timestamp} ${level} ${str} ${message} `;
             })
         )
@@ -38,7 +38,7 @@ export namespace Logger {
     _logger.info(msg);
   }
 
-  export function getLogger(): winston.Logger {
+  export function getLogger(method:string): winston.Logger {
     return _logger;
   }
 }

@@ -1,6 +1,6 @@
 import { Contract } from 'fabric-contract-api';
 import { AngusContext } from './context';
-import { AngusChaincodeError, ERRORCODE } from './error';
+import { AngusChaincodeError, AngusErrorCodes } from './error';
 
 import _ from 'lodash';
 
@@ -14,6 +14,6 @@ export class AngusContract extends Contract {
 
     async unknownTransaction(ctx:AngusContext) {
         ctx.getLogger("unknownTransaction").error(`Unknown service called: ${ctx.stub.getFunctionAndParameters().fcn}`);
-        throw new AngusChaincodeError(ERRORCODE.INVALID_SERVICE); 
+        throw new AngusChaincodeError(AngusErrorCodes.INVALID_SERVICE); 
     }
 } 
