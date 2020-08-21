@@ -9,6 +9,6 @@ export class AngusContext extends Context {
     }
 
     getLogger(method:string) {
-        return Logger.getLogger()
+        return Logger.getLogger(method)
     }
 }
