@@ -1,5 +1,5 @@
-import { AngusModel } from './model';
 import { AngusContext } from './context';
+import { AngusModel } from './model';
 
 import _ from 'lodash';
 
@@ -55,15 +55,17 @@ export class AngusController {
             const res = await iterator.next();
 
             if (res.value && res.value.value.toString()) {
-
-                const Key = res.value.key;
-                let _rec: any;
-                try {
-                    _rec = JSON.parse(res.value.value.toString());
-                } catch (err) {
-                    _rec = res.value.value.toString();
-                }
-                allResults.push(_rec.data);
+              this.ctx.getLogger("getModelList").debug(JSON.stringify(res.value, null, 2));
+              const strValue = Buffer.from(res.value.value).toString("utf8");
+              let record;
+              try {
+                  record = JSON.parse(strValue);
+              } catch (err) {
+                  this.ctx.getLogger("getModelList").error(err);
+                  console.log(err);
+                  record = strValue;
+              }
+              allResults.push(record);
             }
             if (res.done) {
                 await iterator.close();
