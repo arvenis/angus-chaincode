@@ -1,43 +1,42 @@
 {
-    "name": "angus-chaincode",
-    "version": "0.1.7",
-    "description": "Angus chaincode - smart contract framework for HLF",
-    "main": "dist/index.js",
-    "types": "dist/types/index.d.ts",
-    "author": "Istvan Banfi",
-    "license": "Apache-2.0",
-    "engineStrict": true,
-    "engines": {
-        "node": ">=12",
-        "npm": ">=5"
-    },
- 
-    "scripts": {
-        "build": "node_modules/.bin/tsc && cp package.json dist/ && cp -r src/types dist/",
-        "start": "fabric-chaincode-node start",
-        "devstart": "fabric-chaincode-node start --peer.address peer0:7052 --chaincode-id-name 'default:0' --module-path dist/default"
-    },
-    "dependencies": {
-        "fabric-contract-api": "2.1.1",
-        "fabric-shim": "2.1.1",
-        "js-yaml": "^3.13.1",
-        "lodash": "~4.17.15",
-        "winston": "^3.2.1"
-    },
-    "devDependencies": {
-        "@types/chai": "^4.2.7",
-        "@types/fs-extra": "^8.0.1",
-        "@types/inquirer": "^6.5.0",
-        "@types/js-yaml": "^3.12.1",
-        "@types/lodash": "^4.14.123",
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.12.14",
-        "@types/yargs": "^13.0.3",
-        "chai": "^4.2.0",
-        "mocha": "^6.2.2",
-        "nyc": "^15.0.0",
-        "ts-node": "^8.5.4",
-        "tslint": "^5.16.0",
-        "typescript": "^3.4.5"
-    }
+  "name": "angus-chaincode",
+  "version": "0.1.7",
+  "description": "Angus chaincode - smart contract framework for HLF",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Istvan Banfi",
+  "license": "Apache-2.0",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=12",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "build": "node_modules/.bin/tsc && cp package.json dist/ && cp -r src/types dist/",
+    "start": "fabric-chaincode-node start",
+    "devstart": "fabric-chaincode-node start --peer.address peer0:7052 --chaincode-id-name 'default:0' --module-path dist/default"
+  },
+  "dependencies": {
+    "fabric-contract-api": "2.2.1",
+    "fabric-shim": "2.2.1",
+    "js-yaml": "^3.13.1",
+    "lodash": "~4.17.15",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.7",
+    "@types/fs-extra": "^8.0.1",
+    "@types/inquirer": "^6.5.0",
+    "@types/js-yaml": "^3.12.1",
+    "@types/lodash": "^4.14.123",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.14",
+    "@types/yargs": "^13.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nyc": "^15.0.0",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  }
 }
