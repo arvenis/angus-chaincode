@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 export class AngusModel {
     class: string;
@@ -23,11 +23,11 @@ export class AngusModel {
         return this.key;
     }
 
-    getSplitKey(){
+    getSplitKey() {
         return AngusModel.splitKey(this.key);
     }
 
-    getCurrentState(){
+    getCurrentState() {
         return this.currentState;
     }
 
@@ -59,7 +59,7 @@ export class AngusModel {
         if (!objClass) {
             throw new Error(`Unknown class of ${json.class}`);
         }
-        let object = new (objClass)(json);
+        let object = new objClass(json);
 
         return object;
     }
@@ -72,7 +72,7 @@ export class AngusModel {
      */
     static deserializeClass(data, objClass) {
         let json = JSON.parse(data.toString());
-        let object = new (objClass)(json);
+        let object = new objClass(json);
         return object;
     }
 
@@ -84,8 +84,7 @@ export class AngusModel {
         return _.join(keyParts, ':');
     }
 
-    static splitKey(key): string[]{
+    static splitKey(key): string[] {
         return _.split(key, ':');
     }
-
 }

@@ -4,7 +4,6 @@ import { AngusModel } from './model';
 import _ from 'lodash';
 
 export class AngusController {
-
     ctx: AngusContext;
     name: string;
     supportedClasses: any;
@@ -13,7 +12,6 @@ export class AngusController {
         this.ctx = ctx;
         this.name = listName;
         this.supportedClasses = {};
-
     }
 
     createCompositeKey(name: string, keys: string[]) {
@@ -26,10 +24,12 @@ export class AngusController {
         await this.ctx.stub.putState(key, data);
     }
 
-    async getModel(key:string) {
-        let ledgerKey:string = this.createCompositeKey(this.name, AngusModel.splitKey(key));
+    async getModel(key: string) {
+        let ledgerKey: string = this.createCompositeKey(this.name, AngusModel.splitKey(key));
         let data = await this.ctx.stub.getState(ledgerKey);
         let state: any;
+        this.ctx.getLogger('getModel').debug(`ledgerKey: ${ledgerKey}`);
+        this.ctx.getLogger('getModel').debug(`data: ${JSON.stringify(data, null, 2)}`);
         if (!_.isEmpty(data)) {
             state = AngusModel.deserialize(data, this.supportedClasses);
         }
@@ -47,7 +47,7 @@ export class AngusController {
         await this.ctx.stub.deleteState(key);
     }
 
-    async getModelList(query:object) {
+    async getModelList(query: object) {
         const iterator = await this.ctx.stub.getQueryResult(JSON.stringify(query));
         const allResults = [];
 
@@ -55,28 +55,26 @@ export class AngusController {
             const res = await iterator.next();
 
             if (res.value && res.value.value.toString()) {
-              this.ctx.getLogger("getModelList").debug(JSON.stringify(res.value, null, 2));
-              const strValue = Buffer.from(res.value.value).toString("utf8");
-              let record;
-              try {
-                  record = JSON.parse(strValue);
-              } catch (err) {
-                  this.ctx.getLogger("getModelList").error(err);
-                  console.log(err);
-                  record = strValue;
-              }
-              allResults.push(record);
+                this.ctx.getLogger('getModelList').debug(JSON.stringify(res.value, null, 2));
+                const strValue = Buffer.from(res.value.value).toString('utf8');
+                let record;
+                try {
+                    record = JSON.parse(strValue);
+                } catch (err) {
+                    this.ctx.getLogger('getModelList').error(err);
+                    console.log(err);
+                    record = strValue;
+                }
+                allResults.push(record);
             }
             if (res.done) {
                 await iterator.close();
                 return allResults;
             }
         }
-
     }
 
     use(modelClass) {
         this.supportedClasses[modelClass.getClass()] = modelClass;
     }
-
 }

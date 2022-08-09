@@ -1,20 +1,19 @@
 // TODO: Must be generated!
 
 declare module 'angus-chaincode' {
-
     import { Context, Contract } from 'fabric-contract-api';
-    //@ts-ignore TS2300 
+    //@ts-ignore TS2300
     export class AngusContext extends Context {
         constructor();
-        getLogger(method: string): import("winston").Logger;
+        getLogger(method: string): import('winston').Logger;
     }
-    //@ts-ignore TS2300 
-        export class AngusContract extends Contract {
+    //@ts-ignore TS2300
+    export class AngusContract extends Contract {
         LOGLEVEL: string;
         beforeTransaction(ctx: AngusContext): Promise<void>;
         unknownTransaction(ctx: AngusContext): Promise<void>;
     }
-    //@ts-ignore TS2300 
+    //@ts-ignore TS2300
     export class AngusModel {
         class: string;
         key: string;
@@ -30,8 +29,8 @@ declare module 'angus-chaincode' {
         static deserializeClass(data: any, objClass: any): any;
         static makeKey(keyParts: string[]): string;
         static splitKey(key: any): string[];
-    }    
-    //@ts-ignore TS2300 
+    }
+    //@ts-ignore TS2300
     export class AngusController {
         ctx: AngusContext;
         name: string;
@@ -45,17 +44,16 @@ declare module 'angus-chaincode' {
         getModelList(query: object): Promise<any[]>;
         use(modelClass: any): void;
     }
-    
+
     export enum AngusErrorCodes {
         ACCESS_DENIED,
         INTERNAL_ERROR,
         INVALID_SERVICE,
         ENTITY_ALREADY_EXISTS,
-        ENTITY_NOT_EXIST
+        ENTITY_NOT_EXIST,
     }
-    
+
     export class AngusChaincodeError extends Error {
-        constructor(code?: AngusErrorCodes)
+        constructor(code?: AngusErrorCodes);
     }
 }
-
