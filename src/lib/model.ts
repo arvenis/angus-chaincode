@@ -47,7 +47,7 @@ export class AngusModel {
 
     /**
      * Deserialize object into one of a set of supported JSON classes
-     * i.e. Covert serialized data to JSON object
+     * i.e. Convert serialized data to JSON object
      * Typically used after getState() ledger API
      * @param {data} data to deserialize into JSON object
      * @param (supportedClasses) the set of classes data can be serialized to
