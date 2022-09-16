@@ -62,10 +62,9 @@ export class AngusController {
                   record = JSON.parse(strValue);
               } catch (err) {
                   this.ctx.getLogger("getModelList").error(err);
-                  console.log(err);
                   record = strValue;
               }
-              allResults.push(record);
+              allResults.push(record.data);
             }
             if (res.done) {
                 await iterator.close();
