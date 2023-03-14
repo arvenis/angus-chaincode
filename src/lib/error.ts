@@ -24,7 +24,7 @@ export class AngusChaincodeError extends Error {
         let errorMessage = ERRORMESSAGE[code];
         if (message) {
             // Replace the error message for the given one.
-            const originalMessage = message.split('|');
+            const originalMessage = errorMessage.split('|');
             errorMessage = ['', originalMessage[1], message, ''].join('|');
         }
         super(errorMessage);
