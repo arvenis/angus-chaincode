@@ -1,0 +1,3 @@
+# ignoring generated files
+node_modules
+dist
