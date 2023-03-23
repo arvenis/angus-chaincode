@@ -1,7 +1,9 @@
 // TODO: Must be generated!
 
+import { Context, Contract } from 'fabric-contract-api';
+import { HistoryItem } from '../lib/types';
+
 declare module 'angus-chaincode' {
-    import { Context, Contract } from 'fabric-contract-api';
     //@ts-ignore TS2300
     export class AngusContext extends Context {
         constructor();
@@ -42,6 +44,7 @@ declare module 'angus-chaincode' {
         updateModel(model: AngusModel): Promise<void>;
         deleteModel(model: AngusModel): Promise<void>;
         getModelList(query: object): Promise<any[]>;
+        getModelHistory(key: string): Promise<HistoryItem[]>;
         use(modelClass: any): void;
     }
 
