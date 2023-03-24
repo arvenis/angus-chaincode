@@ -48,6 +48,7 @@ export class AngusController {
     }
 
     async getModelList(query: object) {
+        this.ctx.getLogger('getModelList').debug('query', query);
         const iterator = await this.ctx.stub.getQueryResult(JSON.stringify(query));
         const allResults = [];
 

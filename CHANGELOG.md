@@ -36,12 +36,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add CHANGELOG file
 
 ### Changed
+
 - Replace Mocha + Chai with Jest testing framework
 - Upgrade typescript to 4.X
 
 ## [0.1.9] - 2022-01-25
 
 ### Changed
+
 - return only the data for each list item instad of the whole model
 
 ## [0.1.8] - 2022-01-25
