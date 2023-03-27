@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0-1] - 2023-03-27
+
 ### Added
 
 - Add `rimraf` dependency to cleanup dist folder before every dev build
