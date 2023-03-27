@@ -1,7 +1,9 @@
+import _ from 'lodash';
 import * as winston from 'winston';
 
 export namespace Logger {
     let _logger: winston.Logger;
+    let _method: string;
 
     export function createInstance(level: string) {
         _logger = winston.createLogger({
@@ -13,10 +15,22 @@ export namespace Logger {
                         winston.format.colorize(),
                         winston.format.simple(),
                         winston.format.padLevels(),
+                        winston.format.metadata({
+                            fillExcept: ['message', 'level', 'timestamp', 'label'],
+                        }),
                         winston.format.printf(info => {
-                            const { timestamp, level, message } = info;
-                            const str = `[angus]`;
-                            return `${timestamp} ${level} ${str} ${message} `;
+                            const { timestamp, level, label, message, metadata, splat, ...meta } = info;
+                            let source = '[angus]';
+                            if (!_.isEmpty(_method)) {
+                                source += ` ${_method}:`;
+                                _method = undefined;
+                            }
+                            let msg = `${timestamp} ${level} ${source} ${message}`;
+
+                            if (!_.isEmpty(metadata)) {
+                                msg += ` ${JSON.stringify(metadata)}`;
+                            }
+                            return msg;
                         })
                     ),
                 }),
@@ -41,6 +55,7 @@ export namespace Logger {
     }
 
     export function getLogger(method: string): winston.Logger {
+        _method = method; // Not so nice but it works
         return _logger;
     }
 }
