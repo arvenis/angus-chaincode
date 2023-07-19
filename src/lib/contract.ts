@@ -8,7 +8,7 @@ export class AngusContract extends Contract {
     LOGLEVEL: string = '';
 
     async beforeTransaction(ctx: AngusContext) {
-        if (!_.isEmpty(this.LOGLEVEL)) ctx.logger.setLevel(this.LOGLEVEL);
+        if (!_.isEmpty(this.LOGLEVEL)) ctx.logging.setLevel(this.LOGLEVEL);
         ctx.getLogger('beforeTransaction').info(`Start ${ctx.stub.getFunctionAndParameters().fcn}`);
     }
 
