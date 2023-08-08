@@ -11,6 +11,9 @@ describe('AngusChaincodeError', () => {
                 'message',
                 '|BAD_REQUEST|TEST_MESSAGE|'
             );
+            expect(
+                new AngusChaincodeError(AngusErrorCodes.BAD_REQUEST, 'TEST_MESSAGE_DETAILS', 'TEST_ADDITIONAL_DETAILS')
+            ).toHaveProperty('message', '|BAD_REQUEST|TEST_MESSAGE_DETAILS|TEST_ADDITIONAL_DETAILS|');
         });
     });
 });

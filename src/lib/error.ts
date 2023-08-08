@@ -20,12 +20,15 @@ const ERRORMESSAGE: string[] = [
 export class AngusChaincodeError extends Error {
     code: AngusErrorCodes;
 
-    constructor(code: AngusErrorCodes, message?: string) {
+    constructor(code: AngusErrorCodes, message?: string, details?: string) {
         let errorMessage = ERRORMESSAGE[code];
         if (message) {
             // Replace the error message for the given one.
             const originalMessage = errorMessage.split('|');
             errorMessage = ['', originalMessage[1], message, ''].join('|');
+        }
+        if (details) {
+            errorMessage += details + '|';
         }
         super(errorMessage);
     }
