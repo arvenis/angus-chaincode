@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { AngusChaincodeError, AngusErrorCodes } from './error';
 
 export class AngusModel {
     class: string;
@@ -57,7 +58,7 @@ export class AngusModel {
         let json = JSON.parse(data.toString());
         let objClass = supportedClasses[json.class];
         if (!objClass) {
-            throw new Error(`Unknown class of ${json.class}`);
+            throw new AngusChaincodeError(AngusErrorCodes.INTERNAL_ERROR, null, `Unknown class of ${json.class}`);
         }
         let object = new objClass(json);
 

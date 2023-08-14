@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0-3] - 2023-08-14
+
+### Changed
+
+-   Use error codes instead of error messages in the `AngusChaincodeErrors`
+
+### Added
+
+-   Add `details` optional parameter to the Angus Errors
+
 ## [0.2.0-2] - 2023-07-19
 
 ### Changed

@@ -58,6 +58,6 @@ declare module 'angus-chaincode' {
     }
 
     export class AngusChaincodeError extends Error {
-        constructor(code: AngusErrorCodes, message?: string);
+        constructor(code: AngusErrorCodes, message?: string, details?: string);
     }
 }
