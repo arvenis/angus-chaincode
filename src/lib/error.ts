@@ -7,14 +7,15 @@ export enum AngusErrorCodes {
     ENTITY_NOT_EXIST,
 }
 
+// (AN)gus (CC)chaincode (CO)re (001) (E)rror
 // Order should be the same as in the AngusErrorCodes above
 const ERRORMESSAGE: string[] = [
-    '|ACCESS_DENIED|The access is denied for the user (authorization error)|',
-    "|INTERNAL_ERROR|We don't know exactly what happened... Check the logs and good luck!|",
-    "|BAD_REQUEST|The request can't be processed due to a client error|",
-    "|INVALID_SERVICE|The requested chaincode service doesn't exist|",
-    '|ENTITY_ALREADY_EXISTS|Entity already exists|',
-    '|ENTITY_NOT_EXIST|The entity does not exist|',
+    '|ACCESS_DENIED|ANCCCO001E|The access is denied for the user (authorization error)|',
+    '|INTERNAL_ERROR|ANCCCO002E||',
+    "|BAD_REQUEST|ANCCCO003E|The request can't be processed due to a client error|",
+    "|INVALID_SERVICE|ANCCCO004E|The requested chaincode service doesn't exist|",
+    '|ENTITY_ALREADY_EXISTS|ANCCCO005E|Entity already exists|',
+    '|ENTITY_NOT_EXIST|ANCCCO006E|The entity does not exist|',
 ];
 
 export class AngusChaincodeError extends Error {
@@ -22,14 +23,16 @@ export class AngusChaincodeError extends Error {
 
     constructor(code: AngusErrorCodes, message?: string, details?: string) {
         let errorMessage = ERRORMESSAGE[code];
+        const originalMessage = errorMessage.split('|');
         if (message) {
             // Replace the error message for the given one.
-            const originalMessage = errorMessage.split('|');
-            errorMessage = ['', originalMessage[1], message, ''].join('|');
+            originalMessage[2] = message;
         }
         if (details) {
-            errorMessage += details + '|';
+            // Replace the error message for the given one.
+            originalMessage[3] = details;
         }
-        super(errorMessage);
+
+        super(originalMessage.join('|'));
     }
 }
