@@ -29,7 +29,7 @@ export class AngusController {
     async getModel(key: string) {
         let ledgerKey: string = this.createCompositeKey(this.name, AngusModel.splitKey(key));
         let data = await this.ctx.stub.getState(ledgerKey);
-        let state: any;
+        let state: undefined;
         if (!_.isEmpty(data)) {
             state = AngusModel.deserialize(data, this.supportedClasses);
         }
@@ -56,7 +56,6 @@ export class AngusController {
             const res = await iterator.next();
 
             if (res.value && res.value.value.toString()) {
-                this.ctx.getLogger('getModelList').debug(JSON.stringify(res.value, null, 2));
                 const strValue = Buffer.from(res.value.value).toString('utf8');
                 let record;
                 try {

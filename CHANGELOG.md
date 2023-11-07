@@ -14,7 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes.
 -   `Security` in case of vulnerabilities.
 
-## [Unreleased]
+## [Unreleased] - [0.?.?]
+
+## [0.2.0-4] - 2023-11-07
+
+### Fixed
+
+-   Remove the not working and unecessary debug log during the getModelList calls
 
 ## [0.2.0-3] - 2023-08-14
 
